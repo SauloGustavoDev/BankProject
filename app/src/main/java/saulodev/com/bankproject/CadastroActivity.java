@@ -42,7 +42,7 @@ public class CadastroActivity extends AppCompatActivity {
             } else if (!validaCelular(celular.getText().toString())) {
                 Toast.makeText(getApplicationContext(), "É necessário informar um celular válido!", Toast.LENGTH_SHORT).show();
             } else if (!validaSenha(senha.getText().toString())) {
-                Toast.makeText(getApplicationContext(), "É necessário informar uma senha válida!", Toast.LENGTH_SHORT).show();
+
             } else if (!validaConfirmarSenha(confirmarSenha.getText().toString())) {
                 Toast.makeText(getApplicationContext(), "É necessário as senhas serem iguais!", Toast.LENGTH_SHORT).show();
             } else {
@@ -155,12 +155,21 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     private boolean validaSenha(String senhaValidando) {
-        return !senhaValidando.equals("000000") && !senhaValidando.equals("111111") &&
-                !senhaValidando.equals("222222") && !senhaValidando.equals("333333") &&
-                !senhaValidando.equals("444444") && !senhaValidando.equals("555555") &&
-                !senhaValidando.equals("666666") && !senhaValidando.equals("777777") &&
-                !senhaValidando.equals("888888") && !senhaValidando.equals("999999") &&
-                senhaValidando.length() == 6;
+        if (senhaValidando.indexOf("0") == 0){
+            Toast.makeText(getApplicationContext(), "A senha não pode começar com 0", Toast.LENGTH_SHORT).show();
+            return (false);
+        }
+        if (senhaValidando.equals("000000") || senhaValidando.equals("111111") ||
+                senhaValidando.equals("222222") || senhaValidando.equals("333333") ||
+                senhaValidando.equals("444444") || senhaValidando.equals("555555") ||
+                senhaValidando.equals("666666") || senhaValidando.equals("777777") ||
+                senhaValidando.equals("888888") || senhaValidando.equals("999999") ||
+                senhaValidando.length() < 6){
+            Toast.makeText(getApplicationContext(), "É necessário informar uma senha válida!", Toast.LENGTH_SHORT).show();
+            return (false);
+        }else{
+            return (true);
+        }
     }
 
     private boolean validaConfirmarSenha(String senhaConfirma_Validando) {
@@ -181,14 +190,14 @@ public class CadastroActivity extends AppCompatActivity {
 
 
     }
-
     private boolean inserirUsuario() {
         try {
             SQLiteDatabase banco = openOrCreateDatabase("usuario", MODE_PRIVATE, null);
-            banco.execSQL("CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, nomeCompleto VARCHAR(40),cpf NUMERIC(11), nascimento VARCHAR(10), email VARCHAR(40), celular NUMERIC(11), senha NUMERIC(6))");
-            banco.execSQL("INSERT INTO usuario(nomeCompleto, cpf, nascimento, email, celular, senha) VALUES (" + "'" + nome.getText().toString() + "'" + "," + Long.parseLong(cpf.getText().toString()) + "," + "'" + nascimentoValidado.getText().toString() + "'" + "," + "'" + email.getText().toString() + "'" + "," + Long.parseLong(celular.getText().toString()) + "," + Integer.parseInt(senha.getText().toString()) + ")");
+            //banco.execSQL("CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, nomeCompleto VARCHAR(40),cpf NUMERIC(11), nascimento VARCHAR(10), email VARCHAR(40), celular NUMERIC(11), senha NUMERIC(6))");
+            //banco.execSQL("INSERT INTO usuario(nomeCompleto, cpf, nascimento, email, celular, senha) VALUES (" + "'" + nome.getText().toString() + "'" + "," + Long.parseLong(cpf.getText().toString()) + "," + "'" + nascimentoValidado.getText().toString() + "'" + "," + "'" + email.getText().toString() + "'" + "," + Long.parseLong(celular.getText().toString()) + "," + Integer.parseInt(senha.getText().toString()) + ")");
+            banco.execSQL("DELETE FROM usuario");
             return (true);
-            //banco.execSQL("DELETE FROM usuario");
+
         } catch (Exception e) {
             e.printStackTrace();
             return (false);
