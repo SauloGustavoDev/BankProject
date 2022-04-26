@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">BankProject</string>
+    <string name="btn_avançar">Avançar</string>
+    <string name="text_informacoes">Informe alguns dados</string>
+    <string name="edt_nome">Nome</string>
+    <string name="edt_cpf">CPF</string>
+    <string name="edt_email">Email</string>
+    <string name="edt_celular">Celular</string>
+    <string name="edt_senha">Senha</string>
+    <string name="edt_data_nascimento">Nascimento (dia/mes/ano)</string>
+    <string name="text_criar_conta">Criar Conta</string>
+    <string name="confirma_senha">Confirmar senha</string>
+    <string name="dia">Dia</string>
+    <string name="mês">Mês</string>
+    <string name="ano">Ano</string>
+</resources>
