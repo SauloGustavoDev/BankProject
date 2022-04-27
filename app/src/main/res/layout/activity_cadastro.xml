@@ -178,14 +178,13 @@
         app:layout_constraintTop_toBottomOf="@+id/confirmaSenha" />
 
     <TextView
-        android:id="@+id/irLogin"
+        android:id="@+id/irCadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="12dp"
         android:text="Já possuo uma conta"
         android:textColor="@color/white"
-
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />

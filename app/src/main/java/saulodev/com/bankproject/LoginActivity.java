@@ -1,39 +1,36 @@
 package saulodev.com.bankproject;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText loginCpf;
     private EditText loginSenha;
     private Button autenticar;
+    private TextView cadastro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         inicializaComponentes();
-
-        autenticar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (autenticacao() != true){
-                    Toast.makeText(getApplicationContext(), "CPF ou Senha inválidos!", Toast.LENGTH_SHORT).show();
-                }else{
-                    Log.i("resultado", "Passou na autenticação");
-                }
+        autenticar.setOnClickListener(view -> {
+            if (!autenticacao()){
+                Toast.makeText(getApplicationContext(), "CPF ou Senha inválidos!", Toast.LENGTH_SHORT).show();
+            }else{
+                Log.i("resultado", "Passou na autenticação");
             }
         });
+        cadastro.setOnClickListener(View -> abrirCadastro());
     }
-
 
     private boolean autenticacao() {
         try {
@@ -53,28 +50,26 @@ public class LoginActivity extends AppCompatActivity {
                 senha = cursor.getString(indiceSenha);
                 cursor = null;
             }
-            if(loginCpf.getText().toString().indexOf("0", 0) != 1){
+            if(loginCpf.getText().toString().indexOf("0") != 1){
             cpfFormatado = cpfFormatado.replaceFirst("0", "").replaceFirst("0", "");
             }
-            if (cpf.equals(cpfFormatado) && senha.equals(senhaFormatada)){
-                return (true);
-            }else {
-                return (false);
-            }
+            return cpf.equals(cpfFormatado) && senha.equals(senhaFormatada);
         }catch (Exception e) {
                 e.printStackTrace();
                 return (false);
             }
         }
 
-
-
-
-
     private void inicializaComponentes(){
         loginCpf = findViewById(R.id.loginCpf);
         loginSenha = findViewById(R.id.loginSenha);
         autenticar = findViewById(R.id.loginEntrar);
+        cadastro = findViewById(R.id.irCadastro);
+    }
+
+    private void abrirCadastro(){
+        startActivity(new Intent(getApplicationContext(), CadastroActivity.class));
+        finish();
     }
 
 }

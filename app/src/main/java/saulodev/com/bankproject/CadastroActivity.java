@@ -49,11 +49,11 @@ public class CadastroActivity extends AppCompatActivity {
                 if (!inserirUsuario()) {
                     Toast.makeText(getApplicationContext(), "Erro ao cadastrar o usuário, tente novamente!", Toast.LENGTH_SHORT).show();
                 } else {
-                    // avancarMenu();
+                    // abrirMenu();
                 }
             }
         });
-        irLogin.setOnClickListener(view -> avancarLogin());
+        irLogin.setOnClickListener(view -> abrirLogin());
     }
 
     private boolean validaNome(String nomeValidando) {
@@ -185,7 +185,7 @@ public class CadastroActivity extends AppCompatActivity {
         celular = findViewById(R.id.edt_celular);
         senha = findViewById(R.id.edt_senha);
         confirmarSenha = findViewById(R.id.confirmaSenha);
-        irLogin = findViewById(R.id.irLogin);
+        irLogin = findViewById(R.id.irCadastro);
         button = findViewById(R.id.button);
 
 
@@ -194,8 +194,8 @@ public class CadastroActivity extends AppCompatActivity {
         try {
             SQLiteDatabase banco = openOrCreateDatabase("usuario", MODE_PRIVATE, null);
             //banco.execSQL("CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, nomeCompleto VARCHAR(40),cpf NUMERIC(11), nascimento VARCHAR(10), email VARCHAR(40), celular NUMERIC(11), senha NUMERIC(6))");
-            //banco.execSQL("INSERT INTO usuario(nomeCompleto, cpf, nascimento, email, celular, senha) VALUES (" + "'" + nome.getText().toString() + "'" + "," + Long.parseLong(cpf.getText().toString()) + "," + "'" + nascimentoValidado.getText().toString() + "'" + "," + "'" + email.getText().toString() + "'" + "," + Long.parseLong(celular.getText().toString()) + "," + Integer.parseInt(senha.getText().toString()) + ")");
-            banco.execSQL("DELETE FROM usuario");
+            banco.execSQL("INSERT INTO usuario(nomeCompleto, cpf, nascimento, email, celular, senha) VALUES (" + "'" + nome.getText().toString() + "'" + "," + Long.parseLong(cpf.getText().toString()) + "," + "'" + nascimentoValidado.getText().toString() + "'" + "," + "'" + email.getText().toString() + "'" + "," + Long.parseLong(celular.getText().toString()) + "," + Integer.parseInt(senha.getText().toString()) + ")");
+            //banco.execSQL("DELETE FROM usuario");
             return (true);
 
         } catch (Exception e) {
@@ -204,15 +204,14 @@ public class CadastroActivity extends AppCompatActivity {
         }
     }
 
-    private void avancarMenu(){
+    private void abrirMenu(){
        // Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         //startActivity(intent);
         finish();
     }
 
-    private void avancarLogin(){
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(intent);
+    private void abrirLogin(){
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         finish();
     }
 }
