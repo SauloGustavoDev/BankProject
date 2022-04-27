@@ -32,9 +32,7 @@ public class SplashActivity extends AppCompatActivity {
     private void verificaUsuarios(){
         try {
             SQLiteDatabase banco = openOrCreateDatabase("usuario", MODE_PRIVATE, null);
-            //banco.execSQL("DELETE FROM usuario");
             String consulta = "SELECT nomeCompleto, cpf FROM usuario";
-
             Cursor cursor = banco.rawQuery(consulta, null);
             int indiceNome = cursor.getColumnIndex("nomeCompleto");
             int indiceCpf = cursor.getColumnIndex("cpf");
@@ -49,7 +47,6 @@ public class SplashActivity extends AppCompatActivity {
                 }catch (Exception e) {
                    abrirCadastro();
                 }
-
             if (!nomeCompleto.isEmpty() && !cpf.isEmpty()){
                 abrirLogin();
             }else {

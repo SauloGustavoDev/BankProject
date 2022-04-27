@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/activity_cadastro.xml" value="0.33" />
+        <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/activity_main.xml" value="0.20625" />
         <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/splash_activity.xml" value="0.25" />
+        <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/vizu.xml" value="0.22" />
       </map>
     </option>
   </component>

@@ -13,4 +13,5 @@
     <string name="dia">Dia</string>
     <string name="mês">Mês</string>
     <string name="ano">Ano</string>
+    <string name="imgnext">imgNext</string>
 </resources>
