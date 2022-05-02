@@ -3,11 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/activity_alterar_senha.xml" value="0.30185185185185187" />
         <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/activity_cadastro.xml" value="0.33" />
+        <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/activity_dialog.xml" value="0.30185185185185187" />
         <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/activity_home.xml" value="0.33" />
+        <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/activity_ialog.xml" value="0.30185185185185187" />
         <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/activity_main.xml" value="0.20625" />
         <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/splash_activity.xml" value="0.25" />
+        <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/troca_senha.xml" value="0.5" />
         <entry key="..\:/Users/spina/AndroidStudioProjects/BankProject/app/src/main/res/layout/vizu.xml" value="0.22" />
       </map>
     </option>

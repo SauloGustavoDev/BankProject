@@ -9,6 +9,8 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="30dp">
 
+
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="150dp"
@@ -19,6 +21,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/green" />
 
     <View
         android:id="@+id/view"
@@ -32,10 +46,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/nomeCompleto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="60dp"
         android:text="Nome Completo"
         android:textColor="@color/grey"
         android:textSize="20sp"
@@ -47,15 +61,15 @@
     <View
         android:id="@+id/view2"
         android:layout_width="300dp"
-        android:layout_height="3dp"
+        android:layout_height="2dp"
         android:layout_marginTop="2dp"
         android:background="@color/greyEscuro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeCompleto" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/celular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -65,20 +79,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <View
-        android:id="@+id/view7"
-        android:layout_width="300dp"
-        android:layout_height="3dp"
-        android:layout_marginTop="2dp"
-        android:background="@color/greyEscuro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -88,20 +92,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/nascimento" />
 
     <View
         android:id="@+id/view6"
         android:layout_width="300dp"
-        android:layout_height="3dp"
+        android:layout_height="2dp"
         android:layout_marginTop="2dp"
         android:background="@color/greyEscuro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/celular" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/nascimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -111,20 +115,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/cpf" />
 
     <View
         android:id="@+id/view5"
         android:layout_width="300dp"
-        android:layout_height="3dp"
+        android:layout_height="2dp"
         android:layout_marginTop="2dp"
         android:background="@color/greyEscuro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/cpf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -134,40 +138,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeCompleto" />
 
     <View
         android:id="@+id/view4"
         android:layout_width="300dp"
-        android:layout_height="3dp"
+        android:layout_height="2dp"
         android:layout_marginTop="2dp"
         android:background="@color/greyEscuro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Senha"
-        android:textColor="@color/grey"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/nascimento" />
 
     <View
         android:id="@+id/view3"
         android:layout_width="300dp"
-        android:layout_height="3dp"
+        android:layout_height="2dp"
         android:layout_marginTop="2dp"
         android:background="@color/greyEscuro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/cpf" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -188,18 +179,18 @@
         android:text="Alterar Senha!"
         android:textColor="@color/green"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toTopOf="@+id/alterarSenha"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/alterarSenha"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="76dp"
         android:src="@drawable/ic_cadeado"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view7"
+        app:layout_constraintTop_toBottomOf="@+id/view6"
         app:tint="@color/green" />
 
     <View
@@ -207,18 +198,18 @@
         android:layout_width="90dp"
         android:layout_height="1dp"
         android:background="@color/green"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintEnd_toEndOf="@+id/deletarUsuario"
+        app:layout_constraintStart_toStartOf="@+id/deletarUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/deletarUsuario" />
 
     <View
         android:id="@+id/view9"
         android:layout_width="1dp"
         android:layout_height="90dp"
         android:background="@color/green"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/alterarSenha"
+        app:layout_constraintEnd_toStartOf="@+id/alterarSenha"
+        app:layout_constraintTop_toTopOf="@+id/alterarSenha"
         app:layout_constraintVertical_bias="1.0" />
 
     <View
@@ -226,9 +217,9 @@
         android:layout_width="1dp"
         android:layout_height="90dp"
         android:background="@color/green"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/alterarSenha"
+        app:layout_constraintStart_toEndOf="@+id/alterarSenha"
+        app:layout_constraintTop_toTopOf="@+id/alterarSenha"
         app:layout_constraintVertical_bias="1.0" />
 
     <View
@@ -236,9 +227,9 @@
         android:layout_width="90dp"
         android:layout_height="1dp"
         android:background="@color/green"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3" />
+        app:layout_constraintBottom_toTopOf="@+id/alterarSenha"
+        app:layout_constraintEnd_toEndOf="@+id/alterarSenha"
+        app:layout_constraintStart_toStartOf="@+id/alterarSenha" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -248,35 +239,36 @@
         android:text="Deletar usuário!"
         android:textColor="@color/green"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintBottom_toTopOf="@+id/deletarUsuario"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/deletarUsuario"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:layout_marginStart="264dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="76dp"
+        android:onClick="abrirDialog"
         android:src="@drawable/ic_close"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view7"
+        app:layout_constraintTop_toBottomOf="@+id/view6"
         app:tint="@color/green" />
 
     <View
         android:layout_width="90dp"
         android:layout_height="1dp"
         android:background="@color/green"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintEnd_toEndOf="@+id/alterarSenha"
+        app:layout_constraintStart_toStartOf="@+id/alterarSenha"
+        app:layout_constraintTop_toBottomOf="@+id/alterarSenha" />
 
     <View
         android:layout_width="1dp"
         android:layout_height="90dp"
         android:background="@color/green"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@+id/deletarUsuario"
+        app:layout_constraintEnd_toStartOf="@+id/deletarUsuario"
+        app:layout_constraintTop_toTopOf="@+id/deletarUsuario"
         app:layout_constraintVertical_bias="1.0" />
 
     <View
@@ -284,9 +276,9 @@
         android:layout_width="1dp"
         android:layout_height="90dp"
         android:background="@color/green"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@+id/deletarUsuario"
+        app:layout_constraintStart_toEndOf="@+id/deletarUsuario"
+        app:layout_constraintTop_toTopOf="@+id/deletarUsuario"
         app:layout_constraintVertical_bias="1.0" />
 
     <View
@@ -294,9 +286,9 @@
         android:layout_width="90dp"
         android:layout_height="1dp"
         android:background="@color/green"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="@+id/imageView4" />
+        app:layout_constraintBottom_toTopOf="@+id/deletarUsuario"
+        app:layout_constraintEnd_toEndOf="@+id/deletarUsuario"
+        app:layout_constraintStart_toStartOf="@+id/deletarUsuario" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

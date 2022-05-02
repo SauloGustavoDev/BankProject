@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
             if (!autenticacao()){
                 Toast.makeText(getApplicationContext(), "CPF ou Senha inválidos!", Toast.LENGTH_SHORT).show();
             }else{
-                Log.i("resultado", "Passou na autenticação");
+                abrirHome();
             }
         });
         cadastro.setOnClickListener(View -> abrirCadastro());
@@ -37,7 +37,6 @@ public class LoginActivity extends AppCompatActivity {
             SQLiteDatabase banco = openOrCreateDatabase("usuario", MODE_PRIVATE, null);
             String consulta = "SELECT cpf, senha FROM usuario WHERE cpf = " + loginCpf.getText().toString() + " AND senha = " + loginSenha.getText().toString() + "";
             Cursor cursor = banco.rawQuery(consulta, null);
-
             int indiceCpf = cursor.getColumnIndex("cpf");
             int indiceSenha = cursor.getColumnIndex("senha");
             String cpf = "";
@@ -53,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
             if(loginCpf.getText().toString().indexOf("0") != 1){
             cpfFormatado = cpfFormatado.replaceFirst("0", "").replaceFirst("0", "");
             }
-            return cpf.equals(cpfFormatado) && senha.equals(senhaFormatada);
+            return cpf.equals(cpfFormatado) && senha.equals(senhaFormatada) ;
         }catch (Exception e) {
                 e.printStackTrace();
                 return (false);
@@ -69,6 +68,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private void abrirCadastro(){
         startActivity(new Intent(getApplicationContext(), CadastroActivity.class));
+        finish();
+    }
+
+    private void abrirHome(){
+        Intent passaDados = new Intent(getApplicationContext(), HomeActivity.class);
+        passaDados.putExtra("cpf", loginCpf.getText().toString());
+        startActivity(passaDados);
         finish();
     }
 

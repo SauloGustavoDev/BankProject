@@ -1,14 +1,23 @@
 package saulodev.com.bankproject;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
+import android.service.autofill.RegexValidator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,12 +34,14 @@ public class CadastroActivity extends AppCompatActivity {
     private EditText confirmarSenha;
     private Button button;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
         inicializaComponentes();
         button.setOnClickListener(view -> {
+
             if (!validaNome(nome.getText().toString())) {
                 Toast.makeText(getApplicationContext(), "É necessário informar um Nome válido!", Toast.LENGTH_SHORT).show();
             } else if (!validaCPF(cpf.getText().toString())) {
@@ -45,11 +56,14 @@ public class CadastroActivity extends AppCompatActivity {
 
             } else if (!validaConfirmarSenha(confirmarSenha.getText().toString())) {
                 Toast.makeText(getApplicationContext(), "É necessário as senhas serem iguais!", Toast.LENGTH_SHORT).show();
+            }else if(!verificaDuplicidade()){
+
             } else {
                 if (!inserirUsuario()) {
                     Toast.makeText(getApplicationContext(), "Erro ao cadastrar o usuário, tente novamente!", Toast.LENGTH_SHORT).show();
                 } else {
-                    // abrirMenu();
+                    Toast.makeText(getApplicationContext(), "Seja bem vindo "+ nome.getText().toString()+"!", Toast.LENGTH_SHORT).show();
+                    abrirLogin();
                 }
             }
         });
@@ -118,22 +132,27 @@ public class CadastroActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private boolean validaNascimento(String nascimentoValidando) {
-        if (nascimentoValidando.isEmpty() || nascimentoValidando.length() < 8) {
-            //Inválido
-            return (false);
-        } else {
-            int tamanho = nascimentoValidando.length(); //Pega o tamanho da string de data de nascimento digitada
-            int numero;
-            int[] dataNascimentoAno = {0, 0, 0, 0};//Array para armazenar os digitos que compõe o ano
-            //Passando os numeros do ano para o array
-            for (int i = 0; i < 4; i++) {
-                numero = Integer.parseInt(String.valueOf(nascimentoValidando.charAt(tamanho - 1 - i)));
-                dataNascimentoAno[3 - i] = numero;
+        if(isDateValid(nascimentoValidando) == true) {
+            if (nascimentoValidando.isEmpty() || nascimentoValidando.length() < 8) {
+                //Inválido
+                return (false);
+            } else {
+                int tamanho = nascimentoValidando.length(); //Pega o tamanho da string de data de nascimento digitada
+                int numero;
+                int[] dataNascimentoAno = {0, 0, 0, 0};//Array para armazenar os digitos que compõe o ano
+                //Passando os numeros do ano para o array
+                for (int i = 0; i < 4; i++) {
+                    numero = Integer.parseInt(String.valueOf(nascimentoValidando.charAt(tamanho - 1 - i)));
+                    dataNascimentoAno[3 - i] = numero;
+                }
+                String dataNascimentoFinal = dataNascimentoAno[0] + String.valueOf(dataNascimentoAno[1]) + dataNascimentoAno[2] + dataNascimentoAno[3];
+                //Válido
+                return Integer.parseInt(dataNascimentoFinal) < 2022 && 2022 - Integer.parseInt(dataNascimentoFinal) >= 18 && 2022 - Integer.parseInt(dataNascimentoFinal) <= 122;
             }
-            String dataNascimentoFinal = dataNascimentoAno[0] + String.valueOf(dataNascimentoAno[1]) + dataNascimentoAno[2] + dataNascimentoAno[3];
-            //Válido
-            return Integer.parseInt(dataNascimentoFinal) < 2022 && 2022 - Integer.parseInt(dataNascimentoFinal) >= 18 && 2022 - Integer.parseInt(dataNascimentoFinal) <= 122;
+        }else {
+            return false;
         }
     }
 
@@ -190,12 +209,13 @@ public class CadastroActivity extends AppCompatActivity {
 
 
     }
+
     private boolean inserirUsuario() {
         try {
             SQLiteDatabase banco = openOrCreateDatabase("usuario", MODE_PRIVATE, null);
             //banco.execSQL("CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, nomeCompleto VARCHAR(40),cpf NUMERIC(11), nascimento VARCHAR(10), email VARCHAR(40), celular NUMERIC(11), senha NUMERIC(6))");
-            banco.execSQL("INSERT INTO usuario(nomeCompleto, cpf, nascimento, email, celular, senha) VALUES (" + "'" + nome.getText().toString() + "'" + "," + Long.parseLong(cpf.getText().toString()) + "," + "'" + nascimentoValidado.getText().toString() + "'" + "," + "'" + email.getText().toString() + "'" + "," + Long.parseLong(celular.getText().toString()) + "," + Integer.parseInt(senha.getText().toString()) + ")");
-            //banco.execSQL("DELETE FROM usuario");
+            //banco.execSQL("INSERT INTO usuario(nomeCompleto, cpf, nascimento, email, celular, senha) VALUES (" + "'" + nome.getText().toString() + "'" + "," + Long.parseLong(cpf.getText().toString()) + "," + "'" + nascimentoValidado.getText().toString() + "'" + "," + "'" + email.getText().toString() + "'" + "," + Long.parseLong(celular.getText().toString()) + "," + Integer.parseInt(senha.getText().toString()) + ")");
+            banco.execSQL("DELETE FROM usuario");
             return (true);
 
         } catch (Exception e) {
@@ -204,14 +224,89 @@ public class CadastroActivity extends AppCompatActivity {
         }
     }
 
-    private void abrirMenu(){
-       // Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-        //startActivity(intent);
-        finish();
-    }
-
     private void abrirLogin(){
         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         finish();
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private boolean isDateValid(String strDate) {
+        strDate = strDate.replaceAll("/", "");
+        String dataDia = strDate.substring(0 , 2);
+        String dataMes = strDate.substring(2 , 4);
+        String dataAno = strDate.substring(4 , 8);
+        strDate = dataDia + "/" + dataMes + "/" + dataAno;
+        String dateFormat = "dd/MM/uuuu";
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+                .ofPattern(dateFormat)
+                .withResolverStyle(ResolverStyle.STRICT);
+        try {
+            LocalDate date = LocalDate.parse(strDate, dateTimeFormatter);
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+    private boolean verificaDuplicidade(){
+        int cont = 0;
+        String cpfEncontrado = null;
+        String celularEncontrado = null;
+        String emailEncontrado = null;
+        Cursor cursor = null;
+        SQLiteDatabase banco = openOrCreateDatabase("usuario", MODE_PRIVATE, null);
+        try {
+            String consulta = "SELECT cpf FROM usuario WHERE cpf = "+ cpf.getText().toString() +"";
+            cursor = banco.rawQuery(consulta, null);
+            int indiceCpf = cursor.getColumnIndex("cpf");
+            cursor.moveToFirst();
+            cpfEncontrado = cursor.getString(indiceCpf);
+        }catch (Exception e){
+            e.printStackTrace();
+            cont = cont + 1;
+        }
+        if (cpfEncontrado != null){
+            Toast.makeText(getApplicationContext(), "Cpf já cadastrado!", Toast.LENGTH_SHORT).show();
+            return (false);
+        }
+        try {
+            String consulta = "SELECT email FROM usuario WHERE email = "+"'"+ email.getText().toString() + "'"+"";
+            cursor = banco.rawQuery(consulta, null);
+            int indiceEmail = cursor.getColumnIndex("email");
+            cursor.moveToFirst();
+            emailEncontrado = cursor.getString(indiceEmail);
+        }catch (Exception e){
+        e.printStackTrace();
+        cont = cont + 1;
+        }
+        if (emailEncontrado != null){
+            Toast.makeText(getApplicationContext(), "Email já cadastrado!", Toast.LENGTH_SHORT).show();
+            return (false);
+        }
+        try {
+            String consulta = "SELECT celular FROM usuario WHERE celular = "+ celular.getText().toString() +"";
+            cursor = banco.rawQuery(consulta, null);
+            int indiceCelular = cursor.getColumnIndex("celular");
+            cursor.moveToFirst();
+            celularEncontrado = cursor.getString(indiceCelular);
+        }catch (Exception e){
+            e.printStackTrace();
+            cont = cont + 1;
+        }
+        if (celularEncontrado != null){
+            Toast.makeText(getApplicationContext(), "Celular já cadastrado!", Toast.LENGTH_SHORT).show();
+            return (false);
+        }
+        if (cont == 3){
+            banco.close();
+            return (true);
+            
+        }else {
+            banco.close();
+            cursor.close();
+            return (false);
+        }
+    }
+
 }
