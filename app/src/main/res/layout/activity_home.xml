@@ -4,24 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/white"
     tools:context=".HomeActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="30dp">
-
-
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:contentDescription="@string/imgnext"
-        android:src="@drawable/next"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
 
     <ImageView
         android:id="@+id/logout"
@@ -32,25 +18,50 @@
         android:src="@drawable/ic_logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/green" />
+        app:tint="@color/black" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="250dp"
+        app:layoutDescription="@string/cntd_logo"
+        android:layout_height="250dp"
+        android:layout_marginTop="-20dp"
+        android:contentDescription="@string/imgnext"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:layout_marginTop="136dp"
-        android:background="@color/greyEscuro"
+        android:layout_marginTop="6dp"
+        android:background="@color/yalow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conect Bank"
+        android:layout_marginTop="-20dp"
+        android:textColor="@color/yalow"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/nomeCompleto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="Nome Completo"
+        android:text="@string/edt_nome"
+        android:layout_marginTop="15dp"
         android:textColor="@color/grey"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,9 +72,9 @@
     <View
         android:id="@+id/view2"
         android:layout_width="300dp"
-        android:layout_height="2dp"
+        android:layout_height="3dp"
         android:layout_marginTop="2dp"
-        android:background="@color/greyEscuro"
+        android:background="@color/yalow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomeCompleto" />
@@ -72,8 +83,8 @@
         android:id="@+id/celular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Celular"
+        android:layout_marginTop="20dp"
+        android:text="@string/edt_celular"
         android:textColor="@color/grey"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,8 +96,8 @@
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="E-mail"
+        android:layout_marginTop="20dp"
+        android:text="@string/edt_email"
         android:textColor="@color/grey"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,9 +108,9 @@
     <View
         android:id="@+id/view6"
         android:layout_width="300dp"
-        android:layout_height="2dp"
+        android:layout_height="3dp"
         android:layout_marginTop="2dp"
-        android:background="@color/greyEscuro"
+        android:background="@color/yalow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/celular" />
@@ -108,8 +119,8 @@
         android:id="@+id/nascimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Nascimento"
+        android:layout_marginTop="20dp"
+        android:text="@string/edt_data_nascimento"
         android:textColor="@color/grey"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,9 +131,9 @@
     <View
         android:id="@+id/view5"
         android:layout_width="300dp"
-        android:layout_height="2dp"
+        android:layout_height="3dp"
         android:layout_marginTop="2dp"
-        android:background="@color/greyEscuro"
+        android:background="@color/yalow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
@@ -131,8 +142,8 @@
         android:id="@+id/cpf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Cpf"
+        android:layout_marginTop="20dp"
+        android:text="@string/edt_cpf"
         android:textColor="@color/grey"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,9 +154,9 @@
     <View
         android:id="@+id/view4"
         android:layout_width="300dp"
-        android:layout_height="2dp"
+        android:layout_height="3dp"
         android:layout_marginTop="2dp"
-        android:background="@color/greyEscuro"
+        android:background="@color/yalow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nascimento" />
@@ -153,9 +164,9 @@
     <View
         android:id="@+id/view3"
         android:layout_width="300dp"
-        android:layout_height="2dp"
+        android:layout_height="3dp"
         android:layout_marginTop="2dp"
-        android:background="@color/greyEscuro"
+        android:background="@color/yalow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cpf" />
@@ -163,8 +174,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Todos os direitos reservados©"
-        android:textColor="@color/white"
+        android:text="@string/txt_todos_os_direitos"
+        android:textColor="@color/grey"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -172,32 +183,34 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="4dp"
-        android:text="Alterar Senha!"
-        android:textColor="@color/green"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/txt_alterar_senha"
+        android:textColor="@color/grey"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/alterarSenha"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/celular" />
 
     <ImageView
         android:id="@+id/alterarSenha"
         android:layout_width="90dp"
+        app:layoutDescription="@string/cntd_botao_editar_senha"
         android:layout_height="90dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginStart="60dp"
         android:src="@drawable/ic_cadeado"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view6"
-        app:tint="@color/green" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:tint="@color/yalow" />
 
     <View
         android:id="@+id/view8"
         android:layout_width="90dp"
         android:layout_height="1dp"
-        android:background="@color/green"
+        android:background="@color/yalow"
         app:layout_constraintEnd_toEndOf="@+id/deletarUsuario"
         app:layout_constraintStart_toStartOf="@+id/deletarUsuario"
         app:layout_constraintTop_toBottomOf="@+id/deletarUsuario" />
@@ -206,7 +219,7 @@
         android:id="@+id/view9"
         android:layout_width="1dp"
         android:layout_height="90dp"
-        android:background="@color/green"
+        android:background="@color/yalow"
         app:layout_constraintBottom_toBottomOf="@+id/alterarSenha"
         app:layout_constraintEnd_toStartOf="@+id/alterarSenha"
         app:layout_constraintTop_toTopOf="@+id/alterarSenha"
@@ -216,7 +229,7 @@
         android:id="@+id/view10"
         android:layout_width="1dp"
         android:layout_height="90dp"
-        android:background="@color/green"
+        android:background="@color/yalow"
         app:layout_constraintBottom_toBottomOf="@+id/alterarSenha"
         app:layout_constraintStart_toEndOf="@+id/alterarSenha"
         app:layout_constraintTop_toTopOf="@+id/alterarSenha"
@@ -226,38 +239,39 @@
         android:id="@+id/view11"
         android:layout_width="90dp"
         android:layout_height="1dp"
-        android:background="@color/green"
+        android:background="@color/yalow"
         app:layout_constraintBottom_toTopOf="@+id/alterarSenha"
         app:layout_constraintEnd_toEndOf="@+id/alterarSenha"
-        app:layout_constraintStart_toStartOf="@+id/alterarSenha" />
+        app:layout_constraintStart_toStartOf="@+id/alterarSenha"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="4dp"
-        android:text="Deletar usuário!"
-        android:textColor="@color/green"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:text="@string/txt_alterar_deletar_usuario"
+        android:textColor="@color/grey"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/deletarUsuario"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/celular" />
 
     <ImageView
         android:id="@+id/deletarUsuario"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:layout_marginStart="256dp"
-        android:layout_marginTop="76dp"
-        android:onClick="abrirDialog"
+        android:contentDescription="@string/cntd_botao_deletar_usuario"
+        android:layout_marginStart="269dp"
         android:src="@drawable/ic_close"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view6"
-        app:tint="@color/green" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:tint="@color/yalow" />
 
     <View
         android:layout_width="90dp"
         android:layout_height="1dp"
-        android:background="@color/green"
+        android:background="@color/yalow"
         app:layout_constraintEnd_toEndOf="@+id/alterarSenha"
         app:layout_constraintStart_toStartOf="@+id/alterarSenha"
         app:layout_constraintTop_toBottomOf="@+id/alterarSenha" />
@@ -265,7 +279,7 @@
     <View
         android:layout_width="1dp"
         android:layout_height="90dp"
-        android:background="@color/green"
+        android:background="@color/yalow"
         app:layout_constraintBottom_toBottomOf="@+id/deletarUsuario"
         app:layout_constraintEnd_toStartOf="@+id/deletarUsuario"
         app:layout_constraintTop_toTopOf="@+id/deletarUsuario"
@@ -275,7 +289,7 @@
         android:id="@+id/view16"
         android:layout_width="1dp"
         android:layout_height="90dp"
-        android:background="@color/green"
+        android:background="@color/yalow"
         app:layout_constraintBottom_toBottomOf="@+id/deletarUsuario"
         app:layout_constraintStart_toEndOf="@+id/deletarUsuario"
         app:layout_constraintTop_toTopOf="@+id/deletarUsuario"
@@ -285,9 +299,10 @@
         android:id="@+id/view15"
         android:layout_width="90dp"
         android:layout_height="1dp"
-        android:background="@color/green"
+        android:background="@color/yalow"
         app:layout_constraintBottom_toTopOf="@+id/deletarUsuario"
         app:layout_constraintEnd_toEndOf="@+id/deletarUsuario"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/deletarUsuario" />
 
 

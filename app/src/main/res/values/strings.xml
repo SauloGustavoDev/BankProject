@@ -1,17 +1,43 @@
 <resources>
     <string name="app_name">BankProject</string>
+
+    <string name="btn_alterar">ALTERAR</string>
     <string name="btn_avançar">Avançar</string>
+    <string name="btn_cancelar">CANCELAR</string>
+    <string name="btn_salvar">SALVAR</string>
+    <string name="btn_entrar">ENTRAR</string>
+
     <string name="text_informacoes">Informe alguns dados</string>
+    <string name="text_criar_conta">Criar Conta</string>
+    <string name="txt_cadastrar">Cadastra-se</string>
+    <string name="txt_nome_banco">Conect Bank</string>
+    <string name="txt_todos_os_direitos">Todos os direitos reservados©</string>
+    <string name="txt_alterar_senha">Alterar Senha!</string>
+    <string name="txt_alterar_deletar_usuario">Deletar Usuário!</string>
+    <string name="txt_ja_possui_conta">Já possuo uma conta.</string>
+    <string name="txt_alteracao_senha">Alteração de Senha</string>
+    <string name="txt_informe_mais_dados">Informe mais alguns dados</string>
+
     <string name="edt_nome">Nome</string>
     <string name="edt_cpf">CPF</string>
     <string name="edt_email">Email</string>
     <string name="edt_celular">Celular</string>
     <string name="edt_senha">Senha</string>
     <string name="edt_data_nascimento">Nascimento (dia/mes/ano)</string>
-    <string name="text_criar_conta">Criar Conta</string>
+    <string name="edt_confirmar_nova_senha">Confirmar nova senha</string>
+    <string name="edt_nova_senha">Nova senha</string>
+    <string name="edt_senha_atual">Senha atual</string>
+    <string name="edt_renda_mensal">Renda Mensal</string>
+    <string name="edt_patrimonio_liquido">Patrimônio Líquido</string>
+
     <string name="confirma_senha">Confirmar senha</string>
     <string name="dia">Dia</string>
     <string name="mês">Mês</string>
     <string name="ano">Ano</string>
     <string name="imgnext">imgNext</string>
+
+    <string name="cntd_logo">Logo Conect Bank</string>
+    <string name="cntd_botao_editar_senha">Botão Editar Senha</string>
+    <string name="cntd_botao_deletar_usuario">Botão Deletar Usuário</string>
+
 </resources>

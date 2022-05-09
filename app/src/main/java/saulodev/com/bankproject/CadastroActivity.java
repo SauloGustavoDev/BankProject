@@ -8,7 +8,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
-import android.service.autofill.RegexValidator;
+import android.os.StrictMode;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -59,13 +61,8 @@ public class CadastroActivity extends AppCompatActivity {
             }else if(!verificaDuplicidade()){
 
             } else {
-                if (!inserirUsuario()) {
-                    Toast.makeText(getApplicationContext(), "Erro ao cadastrar o usuário, tente novamente!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Seja bem vindo "+ nome.getText().toString()+"!", Toast.LENGTH_SHORT).show();
-                    abrirLogin();
+                    enviarUsuario();
                 }
-            }
         });
         irLogin.setOnClickListener(view -> abrirLogin());
     }
@@ -205,22 +202,49 @@ public class CadastroActivity extends AppCompatActivity {
         senha = findViewById(R.id.edt_senha);
         confirmarSenha = findViewById(R.id.confirmaSenha);
         irLogin = findViewById(R.id.irCadastro);
-        button = findViewById(R.id.button);
+        button = findViewById(R.id.cadastrar);
 
 
     }
 
-    private boolean inserirUsuario() {
+    private void enviarUsuario() {
         try {
-            SQLiteDatabase banco = openOrCreateDatabase("usuario", MODE_PRIVATE, null);
-            //banco.execSQL("CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, nomeCompleto VARCHAR(40),cpf NUMERIC(11), nascimento VARCHAR(10), email VARCHAR(40), celular NUMERIC(11), senha NUMERIC(6))");
+            //SQLiteDatabase banco = openOrCreateDatabase("usuario", MODE_PRIVATE, null);
+            //banco.execSQL("CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, nomeCompleto VARCHAR(40),cpf NUMERIC(11), nascimento VARCHAR(10), email VARCHAR(40), celular NUMERIC(11), rendaMensal NUMERIC(9), valorPatrimonio NUMERIC(9),  senha NUMERIC(6))");
             //banco.execSQL("INSERT INTO usuario(nomeCompleto, cpf, nascimento, email, celular, senha) VALUES (" + "'" + nome.getText().toString() + "'" + "," + Long.parseLong(cpf.getText().toString()) + "," + "'" + nascimentoValidado.getText().toString() + "'" + "," + "'" + email.getText().toString() + "'" + "," + Long.parseLong(celular.getText().toString()) + "," + Integer.parseInt(senha.getText().toString()) + ")");
-            banco.execSQL("DELETE FROM usuario");
-            return (true);
+            //banco.execSQL("DELETE FROM usuario");
+            Intent intent = new Intent(getApplicationContext(), CadastrosFinancasActivity.class);
+            intent.putExtra("nome", nome.getText().toString());
+            intent.putExtra("cpf", cpf.getText().toString());
+            intent.putExtra("nascimento", nascimentoValidado.getText().toString());
+            intent.putExtra("email", email.getText().toString());
+            intent.putExtra("celular", celular.getText().toString());
+            intent.putExtra("senha", senha.getText().toString());
+            Random gerador = new Random();
+            int codigo = (gerador.nextInt(999999));
+            intent.putExtra("codigo", String.valueOf(codigo));
+            new Thread(new Runnable() {
+
+                @Override
+                public void run() {
+                    try {
+
+                        MailSenderActivity sender = new MailSenderActivity("conectbankpj@gmail.com",
+                                "projeto123");
+                        sender.sendMail("Confirmação de email! |- CONECT BANK -|", "Seu código de cadastro é: " +String.valueOf(codigo),
+                                email.getText().toString(), email.getText().toString());
+                        Log.e("resultado", ""+ String.valueOf(codigo));
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        Log.e("SendMail", e.getMessage(), e);
+                    }
+                }
+
+            }).start();
+
 
         } catch (Exception e) {
             e.printStackTrace();
-            return (false);
         }
     }
 
@@ -231,6 +255,9 @@ public class CadastroActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private boolean isDateValid(String strDate) {
+        if (strDate.isEmpty()){
+            return false;
+        }
         strDate = strDate.replaceAll("/", "");
         String dataDia = strDate.substring(0 , 2);
         String dataMes = strDate.substring(2 , 4);
@@ -300,6 +327,7 @@ public class CadastroActivity extends AppCompatActivity {
         }
         if (cont == 3){
             banco.close();
+            cursor.close();
             return (true);
             
         }else {
@@ -309,4 +337,7 @@ public class CadastroActivity extends AppCompatActivity {
         }
     }
 
+    private void confirmaEmail(){
+
+    }
 }

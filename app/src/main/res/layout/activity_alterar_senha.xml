@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/white">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="Alteração de senha"
-                android:textColor="@color/green"
+                android:layout_marginTop="30dp"
+                android:text="@string/txt_alteracao_senha"
+                android:textColor="@color/yalow"
                 android:textSize="26sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -30,10 +32,10 @@
                 android:id="@+id/txt_dados"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:text="@string/text_informacoes"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,31 +46,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="128dp"
                 android:layout_marginEnd="30dp"
-                android:backgroundTint="@color/grey"
-                android:hint="Senha atual"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edt_custom"
+                android:hint="@string/edt_senha_atual"
                 android:inputType="numberPassword"
                 android:maxLength="6"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="@color/grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_dados" />
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="30dp"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="@color/grey"
-                android:hint="Senha nova"
+                android:background="@drawable/edt_custom"
+                android:hint="@string/edt_nova_senha"
                 android:inputType="numberPassword"
                 android:maxLength="6"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="@color/grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -81,47 +83,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="30dp"
-                android:backgroundTint="@color/grey"
-                android:hint="Confirmar senha nova"
+                android:background="@drawable/edt_custom"
+                android:hint="@string/edt_confirmar_nova_senha"
                 android:inputType="numberPassword"
                 android:maxLength="6"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="@color/grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/password" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/buttonAlterarSenha"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
-                android:backgroundTint="@color/green"
-                android:text="alterar"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edt_custom"
+                android:backgroundTint="@color/yalow"
+                android:text="@string/btn_alterar"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/confirmaPassword" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/buttonCancelar"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:backgroundTint="@color/green"
-                android:text="Cancelar"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edt_custom"
+                android:backgroundTint="@color/yalow"
+                android:text="@string/btn_cancelar"
                 android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/confirmaPassword" />
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
