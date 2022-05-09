@@ -4,6 +4,12 @@ plugins {
 
 android {
     compileSdk 31
+    dataBinding{
+        enabled = true
+    }
+    viewBinding{
+        enabled = true
+    }
 
     defaultConfig {
         applicationId "saulodev.com.bankproject"

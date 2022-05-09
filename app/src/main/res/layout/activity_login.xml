@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="saulodev.com.bankproject.ViewModel.LoginViewModel" />
+    </data>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -52,6 +61,7 @@
         android:layout_marginEnd="30dp"
         android:background="@drawable/edt_custom"
         android:hint="@string/edt_cpf"
+        android:text="@{viewModel.LiveData_cpf}"
         android:layout_marginTop="30dp"
         android:inputType="number"
         android:maxLength="11"
@@ -71,6 +81,7 @@
         android:layout_marginEnd="30dp"
         android:background="@drawable/edt_custom"
         android:hint="@string/edt_senha"
+        android:text="@{viewModel.LiveData_senha}"
         android:inputType="numberPassword"
         android:maxLength="6"
         android:textColor="@color/black"
@@ -93,3 +104,5 @@
         app:layout_constraintTop_toBottomOf="@+id/loginEntrar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

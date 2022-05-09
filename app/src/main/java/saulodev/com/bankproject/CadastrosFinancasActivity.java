@@ -45,7 +45,14 @@ public class CadastrosFinancasActivity extends AppCompatActivity {
 
         cadastrar.setOnClickListener(View ->{
             validaCodigo(codigo.getText().toString());
-            //criarUsuario();
+            if(!validaFinancas(Integer.parseInt(renda.getText().toString()))){
+                Toast.makeText(getApplicationContext(), "Informe uma renda valida, menor que 999999999 e maior que 0", Toast.LENGTH_LONG).show();
+            }else if (!validaPatrimonio(Integer.parseInt(patrimonio.getText().toString()))){
+                Toast.makeText(getApplicationContext(), "Informe um patrimonio valido, menor que 999999999 e maior que 0", Toast.LENGTH_LONG).show();
+            }else {
+                criarUsuario();
+
+            }
         });
 
     }
@@ -60,24 +67,23 @@ public class CadastrosFinancasActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String codigo = extras.getString("codigo");
         if (cod.equals(codigo)){
-            Log.e("resultado", "Deu certo");
+
             return (true);
         }else {
-            Log.e("resultado", "Deu errado");
+            Toast.makeText(getApplicationContext(), "O código informado está incorreto!", Toast.LENGTH_LONG).show();
             return (false);
         }
     }
     private boolean validaFinancas(Integer rendaMensal){
-        if (rendaMensal < 0 && rendaMensal > 999999999){
+        if (rendaMensal < 0 && rendaMensal > 999999999 || rendaMensal == null){
             Toast.makeText(getApplicationContext(), "Informe uma renda valida, menor que 999999999 e maior que 0", Toast.LENGTH_LONG).show();
             return (false);
         }else {
             return (true);
         }
     }
-    private boolean validaPatrimonio(long patrimonioLiquido){
-        if (patrimonioLiquido < 0 && patrimonioLiquido > 999999999){
-            Toast.makeText(getApplicationContext(), "Informe um patrimonio valido, menor que 999999999 e maior que 0", Toast.LENGTH_LONG).show();
+    private boolean validaPatrimonio(Integer patrimonioLiquido){
+        if (patrimonioLiquido < 0 && patrimonioLiquido > 999999999 || patrimonioLiquido == null){
             return (false);
         }else {
             return (true);
@@ -87,7 +93,7 @@ public class CadastrosFinancasActivity extends AppCompatActivity {
     private void criarUsuario(){
         try {
             Bundle extras = getIntent().getExtras();
-            String nome = extras.getString("nomeCompleto");
+            String nome = extras.getString("nome");
             String cpf = extras.getString("cpf");
             String nascimento = extras.getString("nascimento");
             String email = extras.getString("email");
@@ -97,11 +103,14 @@ public class CadastrosFinancasActivity extends AppCompatActivity {
             //banco.execSQL("CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, nomeCompleto VARCHAR(40),cpf NUMERIC(11), nascimento VARCHAR(10), email VARCHAR(40), celular NUMERIC(11), rendaMensal NUMERIC(9), valorPatrimonio NUMERIC(9),  senha NUMERIC(6))");
             banco.execSQL("INSERT INTO usuario(nomeCompleto, cpf, nascimento, email, celular, rendaMensal, valorPatrimonio, senha) VALUES (" + "'" + nome + "'" + "," + Long.parseLong(cpf) + "," + "'" + nascimento + "'" + "," + "'" + email + "'" + "," + Long.parseLong(celular) + "," + Integer.parseInt(renda.getText().toString()) + "," + Integer.parseInt(patrimonio.getText().toString()) + "," + Integer.parseInt(senha) + ")");
             //banco.execSQL("DELETE FROM usuario");
-
-
+            //banco.execSQL("DROP TABLE usuario");
+            Toast.makeText(getApplicationContext(), "Seja bem vindo " + nome, Toast.LENGTH_LONG).show();
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
 
 }

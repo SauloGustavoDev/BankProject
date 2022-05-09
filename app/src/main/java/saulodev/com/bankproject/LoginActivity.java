@@ -11,17 +11,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
+import saulodev.com.bankproject.ViewModel.LoginViewModel;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText loginCpf;
     private EditText loginSenha;
     private Button autenticar;
     private TextView cadastro;
+    //private LoginViewModel loginViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         inicializaComponentes();
+       //loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+
         autenticar.setOnClickListener(view -> {
             if (!autenticacao()){
                 Toast.makeText(getApplicationContext(), "CPF ou Senha inválidos!", Toast.LENGTH_SHORT).show();
