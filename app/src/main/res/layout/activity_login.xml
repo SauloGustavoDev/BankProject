@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-        <variable
-            name="viewModel"
-            type="saulodev.com.bankproject.ViewModel.LoginViewModel" />
-    </data>
-
-
-<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
+
+    <CheckBox
+        android:id="@+id/checkBoxAgenciaeConta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Entrar com Agencia e Conta"
+        android:textColor="@color/yalow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginSenha" />
 
     <android.widget.Button
         android:id="@+id/loginEntrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/btn_amarelo"
         android:text="@string/btn_entrar"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxAgenciaeConta" />
 
     <TextView
         android:id="@+id/textView10"
@@ -46,7 +48,7 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:contentDescription="@string/cntd_logo"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,10 +63,9 @@
         android:layout_marginEnd="30dp"
         android:background="@drawable/edt_custom"
         android:hint="@string/edt_cpf"
-        android:text="@{viewModel.LiveData_cpf}"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:inputType="number"
-        android:maxLength="11"
+        android:maxLength="14"
         android:textColor="@color/black"
         android:textColorHint="@color/yalow"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,21 +74,68 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <EditText
+        android:id="@+id/loginAgencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/edt_custom"
+        android:visibility="gone"
+        android:hint="Agência"
+        android:inputType="number"
+        android:maxLength="4"
+        android:textColor="@color/black"
+        android:textColorHint="@color/yalow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <EditText
+        android:id="@+id/loginConta"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/edt_custom"
+        android:hint="Conta"
+        android:visibility="gone"
+        android:inputType="number"
+        android:maxLength="6"
+        android:textColor="@color/black"
+        android:textColorHint="@color/yalow"
+        app:layout_constraintStart_toEndOf="@+id/loginAgencia"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <EditText
+        android:id="@+id/digitoVerificador"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="1dp"
+        android:background="@drawable/edt_custom"
+        android:hint="Digito"
+        android:inputType="number"
+        android:maxLength="6"
+        android:textColor="@color/black"
+        android:textColorHint="@color/yalow"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/loginConta"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <EditText
         android:id="@+id/loginSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/edt_custom"
         android:hint="@string/edt_senha"
-        android:text="@{viewModel.LiveData_senha}"
         android:inputType="numberPassword"
         android:maxLength="6"
         android:textColor="@color/black"
         android:textColorHint="@color/yalow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginCpf" />
 
@@ -104,5 +152,3 @@
         app:layout_constraintTop_toBottomOf="@+id/loginEntrar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-</layout>

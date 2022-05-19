@@ -17,6 +17,24 @@
     <string name="txt_ja_possui_conta">Já possuo uma conta.</string>
     <string name="txt_alteracao_senha">Alteração de Senha</string>
     <string name="txt_informe_mais_dados">Informe mais alguns dados</string>
+    <string name="txt_nome">Nome do usuário</string>
+    <string name="txt_cifrao">R$</string>
+    <string name="txt_serviços">Nossos Serviços</string>
+    <string name="txt_pix">Pix</string>
+    <string name="txt_pagamento">Pagamentos</string>
+    <string name="txt_transferencia">Transferências</string>
+    <string name="txt_depositar">Depositar</string>
+    <string name="txt_cartoes">Cartões</string>
+    <string name="txt_investimento">Investimentos</string>
+    <string name="txt_fazer_transferencia">Fazer Transferência</string>
+    <string name="txt_informe_valor">Informe o valor</string>
+    <string name="txt_banco">Instituição Bancária</string>
+    <string name="txt_agencia">Agência</string>
+    <string name="txt_conta">Conta</string>
+    <string name="txt_descricao">Descrição(opcional)</string>
+    <string name="txt_documento">CPF</string>
+
+
 
     <string name="edt_nome">Nome</string>
     <string name="edt_cpf">CPF</string>
@@ -29,6 +47,11 @@
     <string name="edt_senha_atual">Senha atual</string>
     <string name="edt_renda_mensal">Renda Mensal</string>
     <string name="edt_patrimonio_liquido">Patrimônio Líquido</string>
+    <string name="edt_agencia">Agência</string>
+    <string name="edt_conta">Conta</string>
+    <string name="edt_saldo_transf">00,00</string>
+    <string name="edt_numero_agencia">0000</string>
+    <string name="edt_numero_conta">00000000-0</string>
 
     <string name="confirma_senha">Confirmar senha</string>
     <string name="dia">Dia</string>
@@ -39,5 +62,10 @@
     <string name="cntd_logo">Logo Conect Bank</string>
     <string name="cntd_botao_editar_senha">Botão Editar Senha</string>
     <string name="cntd_botao_deletar_usuario">Botão Deletar Usuário</string>
+
+    <string name="check_box">Entar com Agência e Conta</string>
+    <string name="check_box_transf">Transferir com Agência e Conta</string>
+
+
 
 </resources>

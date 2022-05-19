@@ -8,7 +8,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -72,6 +71,9 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     private boolean validaCPF(String cpfValidando) {
+        String ponto = "\\.";
+        cpfValidando = cpfValidando.replaceAll(ponto, "");
+        cpfValidando = cpfValidando.replaceAll("-", "");
         if (cpfValidando.isEmpty() || cpfValidando.length() < 11) {
             return false;
         } else {
@@ -167,6 +169,9 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     private boolean validaCelular(String celularValidando) {
+        celularValidando = celularValidando.replaceAll("\\(","");
+        celularValidando = celularValidando.replaceAll("\\)","");
+        celularValidando = celularValidando.replaceAll("-","");
         return celularValidando.length() >= 11;
     }
 
@@ -196,9 +201,12 @@ public class CadastroActivity extends AppCompatActivity {
 
         nome = findViewById(R.id.edt_nome_completo);
         cpf = findViewById(R.id.edt_cpf);
+        cpf.addTextChangedListener(TextMask.insert(TextMask.CPF_MASK, cpf));
         nascimentoValidado = findViewById(R.id.edt_data_nascimento);
+        nascimentoValidado.addTextChangedListener(TextMask.insert(TextMask.NASCIMENTO_MASK, nascimentoValidado));
         email = findViewById(R.id.edt_email);
         celular = findViewById(R.id.edt_celular);
+        celular.addTextChangedListener(TextMask.insert(TextMask.CELULAR_MASK, celular));
         senha = findViewById(R.id.edt_senha);
         confirmarSenha = findViewById(R.id.confirmaSenha);
         irLogin = findViewById(R.id.irCadastro);
@@ -213,13 +221,21 @@ public class CadastroActivity extends AppCompatActivity {
             //banco.execSQL("CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, nomeCompleto VARCHAR(40),cpf NUMERIC(11), nascimento VARCHAR(10), email VARCHAR(40), celular NUMERIC(11), rendaMensal NUMERIC(9), valorPatrimonio NUMERIC(9),  senha NUMERIC(6))");
             //banco.execSQL("INSERT INTO usuario(nomeCompleto, cpf, nascimento, email, celular, senha) VALUES (" + "'" + nome.getText().toString() + "'" + "," + Long.parseLong(cpf.getText().toString()) + "," + "'" + nascimentoValidado.getText().toString() + "'" + "," + "'" + email.getText().toString() + "'" + "," + Long.parseLong(celular.getText().toString()) + "," + Integer.parseInt(senha.getText().toString()) + ")");
             //banco.execSQL("DELETE FROM usuario");
+            String ponto = "\\.";
+            String cpfCerto = cpf.getText().toString().replaceAll( ponto, "");
+            cpfCerto = cpfCerto.replaceAll("-", "");
             Intent intent = new Intent(getApplicationContext(), CadastrosFinancasActivity.class);
             intent.putExtra("nome", nome.getText().toString());
-            intent.putExtra("cpf", cpf.getText().toString());
+            intent.putExtra("cpf", cpfCerto);
             intent.putExtra("nascimento", nascimentoValidado.getText().toString());
             intent.putExtra("email", email.getText().toString());
             intent.putExtra("celular", celular.getText().toString());
             intent.putExtra("senha", senha.getText().toString());
+            Log.e("Resultado: ", cpf.getText().toString());
+            Log.e("Resultado: ", nascimentoValidado.getText().toString());
+            Log.e("Resultado: ", email.getText().toString());
+            Log.e("Resultado: ", celular.getText().toString());
+            Log.e("Resultado: ", senha.getText().toString());
             Random gerador = new Random();
             int codigo = (gerador.nextInt(999999));
             intent.putExtra("codigo", String.valueOf(codigo));
@@ -255,14 +271,12 @@ public class CadastroActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private boolean isDateValid(String strDate) {
-        if (strDate.isEmpty()){
+        if (strDate.isEmpty() || strDate.length() < 10){
             return false;
         }
-        strDate = strDate.replaceAll("/", "");
         String dataDia = strDate.substring(0 , 2);
-        String dataMes = strDate.substring(2 , 4);
-        String dataAno = strDate.substring(4 , 8);
-        strDate = dataDia + "/" + dataMes + "/" + dataAno;
+        String dataMes = strDate.substring(3 , 5);
+        String dataAno = strDate.substring(6 , 10);
         String dateFormat = "dd/MM/uuuu";
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter
@@ -337,7 +351,4 @@ public class CadastroActivity extends AppCompatActivity {
         }
     }
 
-    private void confirmaEmail(){
-
-    }
 }

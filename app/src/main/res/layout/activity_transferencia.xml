@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TransferenciaActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_voltar"
+        app:tint="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        android:text="@string/txt_fazer_transferencia"
+        android:textColor="@color/yalow"
+        android:textColorHint="@color/yalow"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/txt_informe_valor"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/edtSaldoTransf"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="28dp"
+        android:background="@drawable/edt_custom"
+        android:hint="@string/edt_saldo_transf"
+        android:inputType="numberDecimal"
+        android:textColor="@color/yalow"
+        android:textColorHint="@color/yalow"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/txtAgencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="28dp"
+        android:text="@string/txt_agencia"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtSaldoTransf" />
+
+    <EditText
+        android:id="@+id/edtAgencia"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/edt_custom"
+        android:hint="0001"
+        android:inputType="number"
+        android:visibility="gone"
+        android:maxLength="4"
+        android:textColor="@color/yalow"
+        android:textColorHint="@color/yalow"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAgencia" />
+
+    <TextView
+        android:id="@+id/txtConta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/txt_conta"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/txtAgencia"
+        app:layout_constraintTop_toBottomOf="@+id/edtSaldoTransf" />
+
+    <EditText
+        android:id="@+id/edtConta"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/edt_custom"
+        android:hint="00001"
+        android:visibility="gone"
+        android:inputType="number"
+        android:maxLength="6"
+        android:textColor="@color/yalow"
+        android:textColorHint="@color/yalow"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/edtAgencia"
+        app:layout_constraintTop_toBottomOf="@+id/txtConta" />
+
+    <TextView
+        android:id="@+id/txtDigito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        android:text="Digito"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/edtConta"
+        app:layout_constraintTop_toBottomOf="@+id/edtSaldoTransf" />
+
+    <EditText
+        android:id="@+id/digitoVerificadorTransferencia"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/edt_custom"
+        android:hint="1"
+        android:inputType="number"
+        android:maxLength="1"
+        android:visibility="gone"
+        android:textColor="@color/yalow"
+        android:textColorHint="@color/yalow"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/edtConta"
+        app:layout_constraintTop_toBottomOf="@+id/txtDigito" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/txt_descricao"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtDocumento" />
+
+    <EditText
+        android:id="@+id/edtDesc"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/edt_custom"
+        android:inputType="text"
+        android:maxLength="40"
+        android:textColor="@color/yalow"
+        android:textColorHint="@color/yalow"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <TextView
+        android:id="@+id/txtCpf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="36dp"
+        android:text="@string/txt_documento"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtSaldoTransf" />
+
+    <EditText
+        android:id="@+id/edtDocumento"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/edt_custom"
+        android:hint="@string/txt_documento"
+        android:inputType="number"
+        android:maxLength="14"
+        android:textColor="@color/yalow"
+        android:textColorHint="@color/yalow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCpf" />
+
+    <CheckBox
+        android:id="@+id/checkoBoxTransf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/check_box_transf"
+        android:textColor="@color/yalow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtDesc" />
+
+    <android.widget.Button
+        android:id="@+id/btnTransferir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/btn_amarelo"
+        android:text="Transferir"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkoBoxTransf" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
